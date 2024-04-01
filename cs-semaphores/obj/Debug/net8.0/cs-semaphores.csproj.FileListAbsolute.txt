@@ -1,0 +1,15 @@
+/home/fino/git/cs-semaphores/cs-semaphores/bin/Debug/net8.0/cs-semaphores
+/home/fino/git/cs-semaphores/cs-semaphores/bin/Debug/net8.0/cs-semaphores.deps.json
+/home/fino/git/cs-semaphores/cs-semaphores/bin/Debug/net8.0/cs-semaphores.runtimeconfig.json
+/home/fino/git/cs-semaphores/cs-semaphores/bin/Debug/net8.0/cs-semaphores.dll
+/home/fino/git/cs-semaphores/cs-semaphores/bin/Debug/net8.0/cs-semaphores.pdb
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.GeneratedMSBuildEditorConfig.editorconfig
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.AssemblyInfoInputs.cache
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.AssemblyInfo.cs
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.csproj.CoreCompileInputs.cache
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.sourcelink.json
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.dll
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/refint/cs-semaphores.dll
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.pdb
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/cs-semaphores.genruntimeconfig.cache
+/home/fino/git/cs-semaphores/cs-semaphores/obj/Debug/net8.0/ref/cs-semaphores.dll
