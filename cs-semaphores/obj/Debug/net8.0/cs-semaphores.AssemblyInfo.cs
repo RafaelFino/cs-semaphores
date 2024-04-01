@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cs-semaphores")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c670a53aa0f2d6c2624fe5413d4aa16433dfcd8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f046141fe6df08993b602c39e93ab789e176b80")]
 [assembly: System.Reflection.AssemblyProductAttribute("cs-semaphores")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cs-semaphores")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
