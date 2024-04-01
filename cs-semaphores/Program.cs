@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Semaphores;
+﻿using Semaphores;
 
 var semA = new Semaphores.Semaphore("Street A");
 var semB = new Semaphores.Semaphore("Street B");
@@ -12,15 +11,15 @@ watcher.Add(semB);
 watcher.Start();
 
 semA.Start(new Dictionary<SemaphoreState, int>() {
-            {SemaphoreState.Green, 3},
-            {SemaphoreState.Yellow, 2},
-            {SemaphoreState.Red, 5}
+            {SemaphoreState.Green, 2},
+            {SemaphoreState.Yellow, 1},
+            {SemaphoreState.Red, 3}
         });
 
 semB.Start(new Dictionary<SemaphoreState, int>() {
-            {SemaphoreState.Red, 5},
-            {SemaphoreState.Green, 3},
-            {SemaphoreState.Yellow, 2}
+            {SemaphoreState.Red, 3},
+            {SemaphoreState.Green, 2},
+            {SemaphoreState.Yellow, 1}
         });
 
 Console.ReadKey();
