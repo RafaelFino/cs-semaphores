@@ -47,7 +47,7 @@ namespace Semaphores
                 {
                     while (this._running)
                     {
-                        SemaphoreChangeEventArgs args;
+                        SemaphoreChangeEventArgs? args;
                         while (_updates.TryDequeue(out args))
                         {
                             Console.ForegroundColor = (ConsoleColor)args.Color;
@@ -80,7 +80,7 @@ namespace Semaphores
             return name;
         }
 
-        public event SemaphoreChangedEventHandler OnSemaphoreChanged;
+        public event SemaphoreChangedEventHandler? OnSemaphoreChanged;
 
         public void ChangeState(SemaphoreState newState)
         {   
