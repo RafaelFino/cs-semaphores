@@ -25,6 +25,9 @@ namespace Semaphores
         private ConcurrentQueue<SemaphoreChangeEventArgs> _updates = new ConcurrentQueue<SemaphoreChangeEventArgs>();
 
         private bool _running = false;
+
+        private Task? _process;
+
         public void Add(Semaphore semaphore)
         {
             _semaphores.Add(semaphore.GetName(), semaphore);
@@ -43,7 +46,7 @@ namespace Semaphores
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"{DateTime.Now} :: Watcher starting!");
 
-                _ = Task.Factory.StartNew(() =>
+                _process = Task.Factory.StartNew(() =>
                 {
                     while (this._running)
                     {
@@ -66,6 +69,10 @@ namespace Semaphores
         public void Stop()
         {
             _running = false;
+            if (_process != null )
+            {
+                _process.Wait();        
+            }
         }
     }
 
@@ -74,6 +81,8 @@ namespace Semaphores
     public class Semaphore(string name)
     {
         private bool _running = false;
+
+        private Task? _process;
 
         public string GetName()
         {
@@ -96,16 +105,24 @@ namespace Semaphores
             Console.WriteLine($"{DateTime.Now} :: Semaphore {name} starting!");
 
             _running = true;
-            Task.Factory.StartNew(() =>
+            _process = Task.Factory.StartNew(() =>
             {
                 while(this._running)
                 {
                     foreach (var item in config)
-                    {
+                    {                                                                        
+                        if (!_running)
+                        {
+                            break;                            
+                        }
+
                         ChangeState(item.Key);
-                        Thread.Sleep(item.Value*1000);
+                        Thread.Sleep(item.Value*1000);                                       
                     }
                 }
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"{DateTime.Now} :: Semaphore {name} Stopped!");             
             });
         }
 
@@ -113,8 +130,10 @@ namespace Semaphores
         {
             _running = false;
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"{DateTime.Now} :: Semaphore {name} Stopped!");             
+            if (_process != null)
+            {
+                _process.Wait();
+            }
         }
     }
 }
