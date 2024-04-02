@@ -58,7 +58,7 @@ namespace Semaphores
                         }
                     }
 
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ResetColor();
                     Console.WriteLine($"{DateTime.Now} :: Watcher Stopped!"); 
                 });
 
@@ -121,7 +121,7 @@ namespace Semaphores
                     }
                 }
 
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ResetColor();
                 Console.WriteLine($"{DateTime.Now} :: Semaphore {name} Stopped!");             
             });
         }
