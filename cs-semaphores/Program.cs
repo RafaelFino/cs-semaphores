@@ -1,29 +1,41 @@
 ﻿using Semaphores;
 
-var semA = new Semaphores.Semaphore("Street A");
-var semB = new Semaphores.Semaphore("Street B");
+var streetA = new Semaphores.Semaphore("Rua da felicidade   ");
+var walkA = new Semaphores.Semaphore(  "Boneco feliz        ");
+var streetB = new Semaphores.Semaphore("Travessa dos Doencas");
+var walkB = new Semaphores.Semaphore(  "Boneco doenca       ");
 
 var watcher = new Watcher();
 
-watcher.Add(semA);
-watcher.Add(semB);
+watcher.Add(streetA);
+watcher.Add(streetB);
+watcher.Add(walkA);
+watcher.Add(walkB);
 
-watcher.Start();
-
-semA.Start(new Dictionary<SemaphoreState, int>() {
+streetA.Set(new Dictionary<SemaphoreState, int>() {
             {SemaphoreState.Green, 2},
             {SemaphoreState.Yellow, 1},
             {SemaphoreState.Red, 3}
         });
 
-semB.Start(new Dictionary<SemaphoreState, int>() {
+walkA.Set(new Dictionary<SemaphoreState, int>() {
+            {SemaphoreState.Red, 3},
+            {SemaphoreState.Green, 3}
+        });
+
+streetB.Set(new Dictionary<SemaphoreState, int>() {
             {SemaphoreState.Red, 3},
             {SemaphoreState.Green, 2},
             {SemaphoreState.Yellow, 1}
         });
 
+walkB.Set(new Dictionary<SemaphoreState, int>() {
+            {SemaphoreState.Green, 3},
+            {SemaphoreState.Red, 3}
+        });
+
+watcher.Start();
+
 Console.ReadKey();
 
-semA.Stop();
-semB.Stop();
 watcher.Stop();

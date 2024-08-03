@@ -1,5 +1,3 @@
-
-
 using System.Collections.Concurrent;
 using System.Diagnostics;
 
@@ -7,8 +5,8 @@ namespace Semaphores
 {
     public enum SemaphoreState 
     {
-        Green = 10,
-        Yellow = 6,
+        Green = 2,
+        Yellow = 14,
         Red = 12    
     }
 
@@ -43,6 +41,11 @@ namespace Semaphores
         {
             if(!_running)
             {
+                foreach (var semaphore in _semaphores)
+                {
+                    semaphore.Value.Start();
+                }
+
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"{DateTime.Now} :: Watcher starting!");
 
@@ -54,7 +57,7 @@ namespace Semaphores
                         while (_updates.TryDequeue(out args))
                         {
                             Console.ForegroundColor = (ConsoleColor)args.Color;
-                            Console.WriteLine($"{DateTime.Now} :: {args.Name} changed to {args.Color}");  
+                            Console.WriteLine($"{DateTime.Now} :: [{args.Name}] ███████████");  
                         }
                     }
 
@@ -69,6 +72,11 @@ namespace Semaphores
         public void Stop()
         {
             _running = false;
+            foreach (var semaphore in _semaphores)
+            {
+                semaphore.Value.Stop();
+            }
+            
             if (_process != null )
             {
                 _process.Wait();        
@@ -80,6 +88,8 @@ namespace Semaphores
 
     public class Semaphore(string name)
     {
+        private IDictionary<SemaphoreState, int> _config = new Dictionary<SemaphoreState, int>();
+
         private bool _running = false;
 
         private Task? _process;
@@ -99,7 +109,12 @@ namespace Semaphores
                 OnSemaphoreChanged(this, args);
             }
         }
-        public void Start(IDictionary<SemaphoreState, int> config)
+        public void Set(IDictionary<SemaphoreState, int> config)
+        {
+            _config = config;            
+        }
+
+        public void Start()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"{DateTime.Now} :: Semaphore {name} starting!");
@@ -109,7 +124,7 @@ namespace Semaphores
             {
                 while(this._running)
                 {
-                    foreach (var item in config)
+                    foreach (var item in this._config)
                     {                                                                        
                         if (!_running)
                         {
